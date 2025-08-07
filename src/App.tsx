@@ -1,10 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { lazy } from 'react';
 import AppLayout from './layout/AppLayout';
-import './App.css';
-
-const OrderPage = lazy(() => import('./pages/OrdersPage/OrderPage'));
-const ProductPage = lazy(() => import('./pages/OrdersPage/OrderPage'));
+import ProductPage from './pages/ProductPage/ProductPage';
+import OrderPage from './pages/OrdersPage/OrderPage';
 
 function App() {
   return (
