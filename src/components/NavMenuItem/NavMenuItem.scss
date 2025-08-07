@@ -1,0 +1,25 @@
+.nav {
+  &__list-link {
+    position: relative;
+    color: black;
+    font-weight: bold;
+    padding-bottom: 3px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: green;
+      transition: width 0.3s;
+    }
+
+    &:hover::before,
+    &:focus::before {
+      width: 100%;
+    }
+  }
+}

@@ -1,27 +1,22 @@
 import { useState, useEffect } from 'react';
-import { io, Socket } from 'socket.io-client';
+import { memo } from 'react';
 import { SiSessionize } from 'react-icons/si';
 import { MdAccessTime } from 'react-icons/md';
 import { GiHealingShield } from 'react-icons/gi';
-import { useDate } from '../hooks/useDate';
+import { useDate } from '../../hooks/useDate';
+import { websocket, disconnectWebsocket } from '../../services/websocket';
 import './TopMenu.scss';
 
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
+const TopMenu = () => {
+  const [sessions, setSessions] = useState<number>(0);
 
-export const TopMenu = () => {
-  const [sessions, setSessions] = useState(0);
   const { dayOfWeek, day, month, year, time } = useDate();
-  useEffect(() => {
-    const socket: Socket = io(SOCKET_URL, {
-      transports: ['websocket'],
-    });
 
-    socket.on('sessions', (count: number) => {
-      setSessions(count);
-    });
+  useEffect(() => {
+    websocket(setSessions);
 
     return () => {
-      socket.disconnect();
+      disconnectWebsocket();
     };
   }, []);
 
@@ -34,8 +29,8 @@ export const TopMenu = () => {
         </div>
         <input className="" type="text" placeholder="Поиск" />
       </div>
-      <div className="d-flex">
-        <div className="top-menu__datetime me-4">
+      <div className="top-menu__datetime d-flex">
+        <div className=" me-4">
           <span className="d-flex">{dayOfWeek}</span>
           <div className="d-flex gap-3">
             <span>
@@ -57,3 +52,5 @@ export const TopMenu = () => {
     </header>
   );
 };
+
+export default memo(TopMenu);
