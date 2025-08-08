@@ -1,0 +1,99 @@
+.orders-list {
+  width: 100%;
+  height: calc(100% - 150px);
+  gap: 15px;
+
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  &__item {
+    width: 95%;
+    padding: 5px 20px;
+    margin-left: 20px;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition: box-shadow 0.2s ease-in-out;
+
+    &.orders-list__item:is(:hover, :focus) {
+      box-shadow: 0 4px 32px #e5e5e5;
+    }
+
+    &.active {
+      width: 30%;
+
+      & .orders-list__name {
+        display: none;
+      }
+
+      & .orders-list__info {
+        margin-right: 40px;
+      }
+
+      & .orders-list__amount,
+      & .orders-list__delete {
+        display: none;
+      }
+    }
+  }
+
+  &__name {
+    width: 100%;
+    max-width: 550px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: justify;
+
+    color: #484141;
+  }
+
+  &__products {
+    & > div:last-child {
+      & span:first-child {
+        color: #484141;
+      }
+      & span:last-child {
+        font-size: 12px;
+        color: #b2b7bc;
+      }
+    }
+  }
+
+  &__date-short,
+  &__date-full {
+    min-width: 88px;
+  }
+
+  &__date-short {
+    color: #8b8b8b;
+    font-size: 12px;
+  }
+
+  &__date-full {
+    color: #484141;
+  }
+
+  &__amount {
+    max-width: 90px;
+
+    font-weight: 400;
+
+    & span:first-child {
+      font-size: 12px;
+      color: #b2b7bc;
+    }
+  }
+
+  &__delete {
+    background: none;
+    border: none;
+    color: #e45d5d;
+    font-size: 20px;
+    margin-left: 12px;
+    cursor: pointer;
+    &:hover {
+      color: #b22;
+    }
+  }
+}

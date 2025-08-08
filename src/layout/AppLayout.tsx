@@ -12,11 +12,11 @@ const AppLayout = () => {
           <TopMenu />
         </div>
       </div>
-      <div className="row mx-0 h-100">
-        <div className="col-2 ps-0">
+      <div className="row mx-0 ">
+        <div className="col-2 ps-0 pe-0">
           <NavigationMenu />
         </div>
-        <div className="col-10">
+        <div className="app-layout__container col-10 ps-0 pe-0 ">
           <main className="app-layout__content">
             <Suspense fallback={<div>Loading page...</div>}>
               <Outlet />
