@@ -1,0 +1,65 @@
+.backdrop {
+  background-color: rgba(128, 188, 202, 0.5);
+}
+
+.orders-page__modal {
+  position: sticky;
+  top: 50%;
+  left: 50%;
+
+  width: 650px;
+  height: auto;
+
+  background-color: white;
+  border-radius: 5px;
+
+  transform: translate(-50%, -50%) scale(0);
+
+  transition: transform 0.2s linear;
+
+  &.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.orders-page__modal-title {
+  max-width: 500px;
+  font-size: 13px;
+}
+
+.orders-page__modal-btns {
+  height: 90px;
+  background-color: rgb(109, 186, 109);
+
+  & button:first-child {
+    height: 35px;
+    width: 110px;
+
+    background-color: transparent;
+    border-radius: 40px;
+    border: none;
+    color: white;
+  }
+  & button:last-child {
+    height: 35px;
+    width: 110px;
+
+    background-color: white;
+    border-radius: 40px;
+    color: red;
+    border: none;
+  }
+}
+
+.order-page_modal-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+  background-color: white;
+
+  cursor: pointer;
+}
