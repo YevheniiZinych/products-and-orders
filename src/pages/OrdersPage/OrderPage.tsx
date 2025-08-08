@@ -9,7 +9,7 @@ import { deleteProduct } from '../../redux/ProductSlice/productOperation';
 import type { IOrder } from '../../redux/types/types';
 import './OrderPage.scss';
 
-type Entity = 'order' | 'product';
+export type Entity = 'order' | 'product';
 
 const deleteOperations: Record<Entity, (id: number) => any> = {
   order: deleteOrder,
