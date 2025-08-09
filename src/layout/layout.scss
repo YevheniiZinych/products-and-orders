@@ -3,18 +3,4 @@
 
   margin: 0 auto;
   text-align: center;
-
-  & > .row:nth-child(2) > [class*='col-'] {
-    height: calc(100vh - 83px);
-    min-height: 0;
-  }
-}
-
-.app-layout__container {
-  height: calc(100dvh - 88px);
-  overflow: hidden;
-}
-
-.app-layout__content {
-  height: 100%;
 }

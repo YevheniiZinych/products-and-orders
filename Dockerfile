@@ -1,19 +1,34 @@
+FROM node:18-alpine as build
 
-FROM node:20 AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
 
+COPY package*.json ./
 RUN npm install
+
 
 COPY . .
 
+
+ARG VITE_BASE_URL
+ARG VITE_SOCKET_URL
+
+
+ENV VITE_BASE_URL=$VITE_BASE_URL
+ENV VITE_SOCKET_URL=$VITE_SOCKET_URL
+
+
 RUN npm run build
+
 
 FROM nginx:alpine
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+
+COPY --from=build /app/dist /usr/share/nginx/html
+
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 

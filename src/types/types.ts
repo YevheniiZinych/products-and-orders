@@ -19,3 +19,5 @@ export interface IOrder {
   description?: string;
   products: IProduct[];
 }
+
+export type Entity = 'order' | 'product';

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IProduct } from '../types/types';
+import type { IProduct } from '../../types/types';
 import { fetchProducts, deleteProduct } from './productOperation';
 
 interface IProductState {

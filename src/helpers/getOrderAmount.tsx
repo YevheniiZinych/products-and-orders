@@ -1,9 +1,9 @@
-import type { IOrder } from '../redux/types/types';
+import type { IProduct } from '../types/types';
 
-export const getOrderAmount = (orders: IOrder) => {
+export const getOrderAmount = (products: IProduct[]) => {
   let sumUSD = 0;
   let sumUAH = 0;
-  orders.products.forEach((product) => {
+  products.forEach((product) => {
     product.price.forEach((p) => {
       if (p.symbol === 'USD') sumUSD += p.value;
       if (p.symbol === 'UAH') sumUAH += p.value;

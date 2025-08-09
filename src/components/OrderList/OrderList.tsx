@@ -1,7 +1,8 @@
 import { MdDeleteForever } from 'react-icons/md';
 import { FaListUl } from 'react-icons/fa';
+import { MdArrowForwardIos } from 'react-icons/md';
 import './OrderList.scss';
-import type { IOrder } from '../../redux/types/types';
+import type { IOrder, IProduct } from '../../types/types';
 import { formatDateShort } from '../../helpers/dateShort';
 import { formatDateFull } from '../../helpers/dateFull';
 import { getOrderAmount } from '../../helpers/getOrderAmount';
@@ -14,6 +15,7 @@ interface IOrderListProp {
   setIsSelectedOrder: (value: boolean) => void;
   isSelectedOrder: boolean;
   setEntity: (value: 'order' | 'product') => void;
+  selectedOrder: IOrder | IProduct | null;
 }
 
 export const OrderList = ({
@@ -23,6 +25,7 @@ export const OrderList = ({
   setIsSelectedOrder,
   isSelectedOrder,
   setEntity,
+  selectedOrder,
 }: IOrderListProp) => {
   return (
     <ul className={`orders-list d-flex flex-column  `}>
@@ -50,7 +53,7 @@ export const OrderList = ({
               <span className="orders-list__date-short">{formatDateShort(order.date)}</span>
               <span className="orders-list__date-full">{formatDateFull(order.date)}</span>
             </div>
-            <div className="orders-list__amount text-start">{getOrderAmount(order)}</div>
+            <div className="orders-list__amount text-start">{getOrderAmount(order.products)}</div>
             <button
               className="orders-list__delete"
               onClick={(e) => {
@@ -62,6 +65,7 @@ export const OrderList = ({
             >
               <MdDeleteForever />
             </button>
+            {selectedOrder?.id === order.id && <MdArrowForwardIos size="30" />}
           </div>
         </li>
       ))}
