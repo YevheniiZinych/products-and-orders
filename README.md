@@ -76,6 +76,6 @@ Dockerfile builds the Vite app and serves it with Nginx
    -t order-app .
 
 - Run:
-  docker run -d -p 3000:80 --name order-app order-app
+  docker run -p 3000:80 order-app
 
 # open in http://localhost:3000
