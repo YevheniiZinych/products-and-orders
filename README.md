@@ -1,69 +1,81 @@
-# React + TypeScript + Vite
+## Orders & Products — Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Single Page Application to browse Orders and Products with real‑time sessions counter via WebSocket.
 
-Currently, two official plugins are available:
+## Host url
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- base URL - [https://products-api-1kn6.onrender.com]
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Orders page:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- List all orders with product count, two date formats, total amount (USD/UAH)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- Click an order → side panel shows its products
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Delete order (confirmation modal)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Products page:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Card view of products
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Filter by product type (dynamic)
+
+- Delete product
+
+## Top menu:
+
+- Live datetime (updated every second)
+
+- Real‑time active sessions (WebSocket)
+
+- Routing transitions with Framer Motion
+
+- Global state with Redux Toolkit
+
+## Tech stack
+
+- React + Vite
+
+- TypeScript
+
+- Redux Toolkit, React‑Redux
+
+- Axios
+
+- Socket.io‑client
+
+- Framer Motion
+
+- Bootstrap 5, SCSS (BEM)
+
+- Docker + Nginx (production build)
+
+## Environment variables
+
+- VITE_BASE_URL=https://products-api-1kn6.onrender.com
+- VITE_SOCKET_URL=https://products-api-1kn6.onrender.com
+
+## Local development
+
+<code>`bash $ npm install $ npm run dev `</code>
+
+## Production build
+
+<code>`bash $ npm run build $ npm run preview `</code>
+
+## Docker
+
+Dockerfile builds the Vite app and serves it with Nginx
+
+- Build with envs:
+  docker build \
+   --build-arg VITE_BASE_URL=https://products-api-1kn6.onrender.com \
+   --build-arg VITE_SOCKET_URL=https://products-api-1kn6.onrender.com \
+   -t order-app .
+
+- Run:
+  docker run -d -p 3000:80 --name order-app order-app
+
+# open in http://localhost:3000
