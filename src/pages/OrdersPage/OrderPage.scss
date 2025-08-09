@@ -1,5 +1,6 @@
 .orders {
   height: 100%;
+  overflow-x: hidden;
   &__title-add {
     width: 40px;
     height: 40px;
@@ -8,6 +9,6 @@
   }
 }
 
-.order__content--wrapp {
-  height: 100%;
+.orders__content--wrapp {
+  max-height: 100vh;
 }

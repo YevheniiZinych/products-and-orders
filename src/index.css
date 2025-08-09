@@ -14,12 +14,6 @@ body {
   padding: 0;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-}
-
 p,
 h1,
 h2,

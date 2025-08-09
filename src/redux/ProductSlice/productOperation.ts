@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import type { IProduct } from '../types/types';
+import type { IProduct } from '../../types/types';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,

@@ -1,20 +1,24 @@
 .order-details {
   position: absolute;
   width: 750px;
-  height: 100%;
+
+  // overflow-y: scroll;
 
   transform: translateX(200%);
   opacity: 0;
 
-  transition:
-    transform 0.5s linear,
-    transform 0.1s linear;
+  transition: transform 0.2s linear;
 
   border-radius: 10px;
 
   &.active {
     transform: translateX(55%);
     opacity: 1;
+    height: calc(100vh - 240px);
+
+    &__products-list {
+      height: inherit;
+    }
   }
 
   &__title {
@@ -24,7 +28,9 @@
 
   &__products-list {
     border-radius: 10px;
-    height: calc(100% - 270px);
+    width: 100%;
+
+    height: calc(100vh - 380px);
     overflow-y: scroll;
     scrollbar-width: none;
   }

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IOrder } from '../types/types';
+import type { IOrder } from '../../types/types';
 import { fetchOrders, deleteOrder } from './orderOperation';
 
 interface IOrdersState {
@@ -41,7 +41,7 @@ const orderSlice = createSlice({
       })
       .addCase(deleteOrder.fulfilled, (state, action: PayloadAction<{ message: string }>) => {
         state.status = 'succeeded';
-        state.message = action.payload;
+        state.message = { message: action.payload.message };
       })
       .addCase(deleteOrder.rejected, (state, action) => {
         state.status = 'failed';

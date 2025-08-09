@@ -3,7 +3,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { TbPointFilled } from 'react-icons/tb';
 import { MdDeleteForever } from 'react-icons/md';
 import { GoDeviceDesktop } from 'react-icons/go';
-import type { IOrder } from '../../redux/types/types';
+import type { IOrder } from '../../types/types';
 import './OrderDetails.scss';
 
 type IProps = {
@@ -42,32 +42,34 @@ export const OrderDetails = ({
         <span>Добавить продукт</span>
       </div>
 
-      <ul className="order-details__products-list ">
-        {order?.products.map((prod) => (
-          <li
-            key={prod.id}
-            className="order-details__product d-flex align-items-center border-bottom border-top "
-          >
-            <TbPointFilled color="green" />
-
-            <GoDeviceDesktop size="30" />
-
-            <div className="order-details__product-type">Type: {prod.type}</div>
-
-            <span className="text-success">Свободен</span>
-
-            <button
-              onClick={() => {
-                onDelete(prod.id);
-                setEntity('product');
-              }}
-              className="order-details__delete"
+      <div className="order-details__list--wrapp">
+        <ul className="order-details__products-list ">
+          {order?.products.map((prod) => (
+            <li
+              key={prod.id}
+              className="order-details__product d-flex align-items-center border-bottom border-top "
             >
-              <MdDeleteForever />
-            </button>
-          </li>
-        ))}
-      </ul>
+              <TbPointFilled color="green" />
+
+              <GoDeviceDesktop size="30" />
+
+              <div className="order-details__product-type">Type: {prod.type}</div>
+
+              <span className="text-success">Свободен</span>
+
+              <button
+                onClick={() => {
+                  onDelete(prod.id);
+                  setEntity('product');
+                }}
+                className="order-details__delete"
+              >
+                <MdDeleteForever />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
