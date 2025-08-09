@@ -1,8 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { lazy } from 'react';
 import AppLayout from './layout/AppLayout';
-import ProductPage from './pages/ProductPage/ProductPage';
-import OrderPage from './pages/OrdersPage/OrderPage';
-import { NotFound } from './pages/NotFound/NotFound';
+
+const OrderPage = lazy(() => import('./pages/OrdersPage/OrderPage'));
+const ProductPage = lazy(() => import('./pages/ProductPage/ProductPage'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 function App() {
   return (
