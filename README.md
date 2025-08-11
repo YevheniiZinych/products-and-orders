@@ -4,7 +4,7 @@ Single Page Application to browse Orders and Products with real‑time sessions 
 
 ## Host url
 
-- base URL - [https://products-api-1kn6.onrender.com]
+- base URL - [https://products-and-orders.onrender.com/orders]
 
 ## Features
 
